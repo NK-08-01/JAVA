@@ -2,47 +2,51 @@ package abstraction;
 
 public class Abstraction {
     public static void main(String[] args) {
-       Car c = new Car();
+       Car c = new fuelCar();
+       Car ec = new electricCar();
+
        c.start();
        c.accelerate();
        c.brake();
 
+       ec.accelerate();
+       ec.brake();
     }
 }
 
-class Car { 
+abstract class Car { 
 
     void start() {
         System.out.println("car is starting");
     }
 
-    void accelerate() {
-        System.out.println("acc is happening");
-    }
+    abstract void accelerate();
 
-    void brake() {
-        System.out.println("brake is happening");
-    }
+   abstract void brake();
 
 }
 
 class fuelCar extends Car {
     
+    @Override
     void accelerate() {
-        System.out.println("acc is happening");
+        System.out.println(" fuel acc is happening");
     }
 
+     @Override
     void brake() {
-        System.out.println("brake is happening");
+        System.out.println(" fuel brake is happening");
     }
 }
 
-class electricCar {
+class electricCar extends fuelCar {
+     @Override
     void accelerate() {
-        System.out.println("acc is happening");
+        System.out.println(" electric acc is happening");
     }
 
+     @Override
     void brake() {
-        System.out.println("brake is happening");
+        System.out.println(" electric brake is happening");
     }
 }
